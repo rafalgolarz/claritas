@@ -1,0 +1,1 @@
+sidebarNodes={"extras":[{"id":"api-reference","title":"API Reference","group":"","headers":[{"id":"Modules","anchor":"modules"}]}],"exceptions":[],"modules":[{"id":"Claritas","title":"Claritas","group":"","nodeGroups":[{"key":"functions","name":"Functions","nodes":[{"id":"shift/2","anchor":"shift/2"}]}]}],"tasks":[]}
