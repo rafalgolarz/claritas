@@ -16,6 +16,8 @@ end
 
 and running `mix deps.get` in your console to fetch from Hex.
 
+ [![Hex.pm](https://img.shields.io/hexpm/v/claritas.svg?maxAge=2592000)](https://hex.pm/packages/claritas)
+
 ## Basic Usage
 ### positive values are lightening the color
 
