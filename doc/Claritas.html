@@ -8,7 +8,6 @@
     <meta name="project" content="claritas v0.1.0">
     <title>Claritas — claritas v0.1.0</title>
     <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
-      <link rel="canonical" href="https://hexdocs.pm/claritas/Claritas.html" />
     <script src="dist/sidebar_items-0a3fc921c5.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
@@ -121,14 +120,28 @@ Functions          </h1>
 </h2>
 
 <pre><code class="nohighlight makeup elixir"><span class="c1"># positive values are lightening the color</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Claritas</span><span class="o">.</span><span class="n">shift</span><span class="p" data-group-id="2470446418-1">(</span><span class="s">&quot;#f06d06&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p" data-group-id="2470446418-1">)</span><span class="w">
-</span><span class="p" data-group-id="2470446418-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;#FF8B24&quot;</span><span class="p" data-group-id="2470446418-2">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Claritas</span><span class="o">.</span><span class="n">shift</span><span class="p" data-group-id="2203547030-1">(</span><span class="s">&quot;#f06d06&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p" data-group-id="2203547030-1">)</span><span class="w">
+</span><span class="p" data-group-id="2203547030-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;#FF8B24&quot;</span><span class="p" data-group-id="2203547030-2">}</span><span class="w">
 
 </span><span class="c1"># negative values are darkening the color</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Claritas</span><span class="o">.</span><span class="n">shift</span><span class="p" data-group-id="2470446418-3">(</span><span class="s">&quot;#f06d06&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">30</span><span class="p" data-group-id="2470446418-3">)</span><span class="w">
-</span><span class="p" data-group-id="2470446418-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;#D24F00&quot;</span><span class="p" data-group-id="2470446418-4">}</span></code></pre>
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Claritas</span><span class="o">.</span><span class="n">shift</span><span class="p" data-group-id="2203547030-3">(</span><span class="s">&quot;#f06d06&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">30</span><span class="p" data-group-id="2203547030-3">)</span><span class="w">
+</span><span class="p" data-group-id="2203547030-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;#D24F00&quot;</span><span class="p" data-group-id="2203547030-4">}</span></code></pre>
 <p>Dynamically increase/decrease brightness of your colors.</p>
-<pre><code class="nohighlight makeup elixir"><span class="n">style</span><span class="o">=</span><span class="sc">&#39;background-color: &lt;%= Claritas.shift(&quot;#f06d06&quot;, @calculated_value) %&gt;&#39;</span></code></pre>
+<p>Controller:</p>
+<pre><code class="nohighlight makeup elixir"><span class="kd">def</span><span class="w"> </span><span class="nf">index</span><span class="p" data-group-id="3504904387-1">(</span><span class="n">conn</span><span class="p">,</span><span class="w"> </span><span class="c">_params</span><span class="p" data-group-id="3504904387-1">)</span><span class="w"> </span><span class="k" data-group-id="3504904387-2">do</span><span class="w">
+  </span><span class="n">shades</span><span class="w"> </span><span class="o">=</span><span class="w">
+    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="mi">1</span><span class="o">.</span><span class="o">.</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="ss">into</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3504904387-3">[</span><span class="p" data-group-id="3504904387-3">]</span><span class="w"> </span><span class="k" data-group-id="3504904387-4">do</span><span class="w">
+      </span><span class="nc">Claritas</span><span class="o">.</span><span class="n">shift</span><span class="p" data-group-id="3504904387-5">(</span><span class="s">&quot;#141C5B&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span><span class="p" data-group-id="3504904387-5">)</span><span class="w">
+    </span><span class="k" data-group-id="3504904387-4">end</span><span class="w">
+
+    </span><span class="n">render</span><span class="p" data-group-id="3504904387-6">(</span><span class="n">conn</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;index.html&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">shades</span><span class="p">:</span><span class="w"> </span><span class="n">shades</span><span class="p" data-group-id="3504904387-6">)</span><span class="w">
+</span><span class="k" data-group-id="3504904387-2">end</span></code></pre>
+<p>Template:</p>
+<pre><code class="nohighlight makeup elixir"><span class="o">&lt;</span><span class="n">ul</span><span class="o">&gt;</span><span class="w">
+  </span><span class="o">&lt;</span><span class="p">%</span><span class="o">=</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="p" data-group-id="1855874889-1">{</span><span class="bp">_</span><span class="p">,</span><span class="w"> </span><span class="n">shade</span><span class="p" data-group-id="1855874889-1">}</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="na">@shades</span><span class="w"> </span><span class="k" data-group-id="1855874889-2">do</span><span class="w"> </span><span class="p">%</span><span class="o">&gt;</span><span class="w">
+    </span><span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="n">span</span><span class="w"> </span><span class="n">style</span><span class="o">=</span><span class="sc">&#39;background-color: &lt;%= shade %&gt;&#39;</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="p">%</span><span class="o">=</span><span class="w"> </span><span class="n">shade</span><span class="w"> </span><span class="p">%</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="o">/</span><span class="n">span</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="o">/</span><span class="n">li</span><span class="o">&gt;</span><span class="w">
+  </span><span class="o">&lt;</span><span class="p">%</span><span class="w"> </span><span class="k" data-group-id="1855874889-2">end</span><span class="w"> </span><span class="p">%</span><span class="o">&gt;</span><span class="w">
+</span><span class="o">&lt;</span><span class="o">/</span><span class="n">ul</span><span class="o">&gt;</span></code></pre>
   </section>
 </section>
           </div>

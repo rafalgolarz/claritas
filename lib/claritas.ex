@@ -16,19 +16,40 @@ defmodule Claritas do
 
   ## Examples
 
-      # positive values are lightening the color
-      iex> Claritas.shift("#f06d06", 30)
-      {:ok, "#FF8B24"}
+  ```
+  # positive values are lightening the color
+  iex> Claritas.shift("#f06d06", 30)
+  {:ok, "#FF8B24"}
 
-      # negative values are darkening the color
-      iex> Claritas.shift("#f06d06", -30)
-      {:ok, "#D24F00"}
-
+  # negative values are darkening the color
+  iex> Claritas.shift("#f06d06", -30)
+  {:ok, "#D24F00"}
+  ```
 
   Dynamically increase/decrease brightness of your colors.
 
-      style='background-color: <%= Claritas.shift("#f06d06", @calculated_value) %>'
+  Controller:
 
+  ```
+  def index(conn, _params) do
+    shades =
+      for i <- 1..20, into: [] do
+        Claritas.shift("#141C5B", 10 * i)
+      end
+
+      render(conn, "index.html", shades: shades)
+  end
+  ```
+
+  Template:
+
+  ```
+  <ul>
+    <%= for {_, shade} <- @shades do %>
+      <li><span style='background-color: <%= shade %>'><%= shade %></span></li>
+    <% end %>
+  </ul>
+  ```
 
   """
   def shift(color, _) when not is_binary(color), do: {:error, "color must be a string"}
