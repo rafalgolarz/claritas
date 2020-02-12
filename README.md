@@ -60,6 +60,10 @@ Template:
 </ul>
 ```
 
+Output:
+
+<img src="assets/claritas_demo.png" />
+
 ## Author
 Rafał Golarz
 
